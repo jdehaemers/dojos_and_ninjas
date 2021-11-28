@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <title>Dojos</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col bg-dark text-warning p-4">
+                <div class="row text-center">
+                    <h1>New Dojo</h1>
+                </div>
+                <div class="row">
+                    <form action="/new_dojo" method='POST'>
+                        <div class="form-group row mt-4">
+                            <label for="new_dojo" class="text-white col-sm-2 col-form-label">Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name='new_dojo' class='form-control'>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <button type='submit' class='btn btn-primary m-4 w-50'>Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col bg-dark text-warning p-4 text-center">
+                <div class="row">
+                    <h1>All Dojos</h1>
+                </div>
+                <div class="row">
+                    {% for dojo in dojos %}
+                    <div class="row">
+                        <a href='/ninja_list/{{ dojo.id }}' class="text-light m-1">{{ dojo.name }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row">
+            <div class="col text-center mt-4">
+                <a href="/new_ninja">Add Ninja</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
